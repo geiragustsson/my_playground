@@ -1,9 +1,10 @@
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
 
-url = "http://andriki.is/2018/05/25/folkid-sem-veit-hvernig-thu-munt-ferdast-arid-2040"
+url_root = "https://inside.nov.com/CAPS/SPS/HR/DK/Employeehandbook/Pages/"
+url_page = "https://inside.nov.com/CAPS/SPS/HR/DK/Employeehandbook/Pages/SmokingPolicy.aspx"
 
-content = urlopen(url).read()
+content = urlopen(url_page).read()
 
 soup = BeautifulSoup(content, 'html.parser')
 
