@@ -20,9 +20,16 @@ find_pid = re.compile(r"""
   [0-9]{4,5}        # Project number 4-5 numbers long, e.g. 5292 or 12830
   -PID-             
   [0-9]{3,4}        # Pipe design number 3-4 numbers long, e.g. 731 or 7904
-  #([a-z]?[^_]*)    # Optional trailing text in pipe design number that is not underscore, e.g. a or b
   (\S?[^_]*)        # Optional trailing text in pipe design number that is not underscore, e.g. a or b
   """, re.VERBOSE)
+
+find_pid2 = re.compile(r"""
+  [0-9]+        # Project number 4-5 numbers long, e.g. 5292 or 12830
+  \S+             
+  [0-9]+        # Pipe design number 3-4 numbers long, e.g. 731 or 7904
+  (\S?[^_]*)        # Optional trailing text in pipe design number that is not underscore, e.g. a or b
+  """, re.VERBOSE)
+
 
 p1 = "12830-PID-402_PF-06"
 p2 = "5292-PID-431_PR-08"
@@ -31,3 +38,6 @@ ps = [p1, p2, p3]
 
 pids = [find_pid.match(p).group() for p in ps]
 print(pids)
+
+pids2 = [find_pid2.match(p).group() for p in ps]
+print(pids2)
